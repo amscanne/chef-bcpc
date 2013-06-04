@@ -1,3 +1,4 @@
+.vagrant
 .rake_test_cache
 .chef/
 cookbooks/apt/

@@ -42,6 +42,17 @@ if hash vagrant ; then
     $CURL -o precise-server-cloudimg-amd64-vagrant-disk1.box http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
   fi
   cp ../Vagrantfile .
+  if [[ ! -e .vagrant ]] && [[ -d ../.vagrant ]]; then
+    # If there's an existing .vagrant in the higher directory,
+    # we simply link to that as the user may have run vagrant up.
+    ln -s ../.vagrant
+  else
+    # Otherwise, make sure the directory exists here.
+    # NOTE: This will catch the case where there is still a
+    # symlink to this directory.
+    mkdir -p .vagrant
+    [[ -e ../.vagrant ]] || ln -s vbox/.vagrant ../.vagrant
+  fi
   if [[ ! -f insecure_private_key ]]; then
     # Ensure that the private key has been created by running vagrant at least once
     vagrant -v
