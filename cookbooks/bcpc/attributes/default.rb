@@ -13,6 +13,8 @@ default['bcpc']['virt_type'] = "kvm"
 default['bcpc']['region_name'] = node.chef_environment
 # Domain name that will be used for DNS
 default['bcpc']['domain_name'] = "bcpc.example.com"
+# Key if Cobalt+VMS is to be used
+default['bcpc']['vms_key'] = nil
 
 ###########################################
 #
@@ -62,6 +64,7 @@ default['bcpc']['repos']['rabbitmq'] = "http://www.rabbitmq.com/debian"
 default['bcpc']['repos']['mysql'] = "http://repo.percona.com/apt"
 default['bcpc']['repos']['openstack'] = "http://ubuntu-cloud.archive.canonical.com/ubuntu"
 default['bcpc']['repos']['hwraid'] = "http://hwraid.le-vert.net/ubuntu"
+default['bcpc']['repos']['gridcentric'] = "http://downloads.gridcentriclabs.com/packages/%s/%s/ubuntu"
 
 ###########################################
 #
@@ -79,6 +82,8 @@ default['bcpc']['zabbix_dbname'] = "zabbix"
 
 default['bcpc']['cinder_rbd_pool'] = "volumes"
 default['bcpc']['glance_rbd_pool'] = "images"
+default['bcpc']['vms_disk_pool'] = "vmsdisk"
+default['bcpc']['vms_mem_pool'] = "vmsmem"
 
 default['bcpc']['admin_tenant'] = "AdminTenant"
 default['bcpc']['admin_role'] = "Admin"
